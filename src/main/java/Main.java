@@ -17,9 +17,19 @@ Breakdown
     - if no, continue
 5.) Repeat steps 1-4 until user enters "exit"
 */
-
+import java.util.Scanner;
 
 public class Main {
   public static void main(String[] args) {
+    System.out.println("1: Very strong");
+    System.out.println("2: Somewhat strong");
+    System.out.println("3: Moderatly strong");
+    System.out.println("4: Somewhat weak");
+    System.out.println("5: Very weak");
+    System.out.print("Select a strength level for this password: ");
+
+    Scanner userInput = new Scanner(System.in);
+    int passwordStrength = userInput.nextInt();
+    userInput.close();
   }
 }
