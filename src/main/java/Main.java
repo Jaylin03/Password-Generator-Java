@@ -20,9 +20,48 @@ Breakdown
 import java.util.Scanner;
 import java.util.Random;
 
-public class Main {
-  public static void main(String[] args) {
 
+public class Main {
+  public static String lowerLetters() {
+    String[] lower = {"a" , "b", "c", "d", "e", "f", "g", "h", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"};
+
+    Random random = new Random();
+    int i = random.nextInt(lower.length);
+    return lower[i];
+  }
+
+  public static String upperLetters() {
+    String[] upper = {"A" , "B", "C", "D", "E", "F", "G", "H", "H", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
+
+    Random random = new Random();
+    int i = random.nextInt(upper.length);
+    return upper[i];
+  }
+
+  public static String numbers() {
+    String[] number = {"0" , "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+
+    Random random = new Random();
+    int i = random.nextInt(number.length);
+    return number[i];
+  }
+
+  public static String specialCharacter() {
+    String[] special = {"?" , "!", "@", "#", "$", "%", "&", ".", ",", "?", "!", ":", ";"};
+
+    Random random = new Random();
+    int i = random.nextInt(special.length);
+    return special[i];
+  }
+
+  public static String newPassword() {
+    String password = lowerLetters() + upperLetters() + numbers() + specialCharacter();
+
+    return password;
+  }
+  
+  public static void main(String[] args) {
+    
     // Step 1a: Ask user for strength of password
     System.out.println("1: Very strong");
     System.out.println("2: Somewhat strong");
@@ -37,24 +76,29 @@ public class Main {
     Random random = new Random();
     int passwordLength;
     // Step 1b: Generate length of password depending on strength level
+    
     if (passwordStrength == 1) {
       passwordLength = random.nextInt(15,30);
-      veryStrong(passwordLength);
+      // veryStrong(passwordLength);
     }
     else if (passwordStrength == 2) {
       passwordLength = 15;
-      somewhatStrong(passwordLength);
+      // somewhatStrong(passwordLength);
     }
     else if (passwordStrength == 3) {
       passwordLength = 10;
-      moderatelyStrong(passwordLength);
+      // moderatelyStrong(passwordLength);
     }
     else if (passwordStrength == 4 || passwordStrength == 5) {
       passwordLength = 5;
-      weak(passwordLength);
+      // weak(passwordLength);
     }
     else {
       passwordLength = random.nextInt(15,30);
-      veryStrong(passwordLength);
+      // veryStrong(passwordLength);
     }
+
+    String password = newPassword();
+    System.out.println("Your new password is: " + password);
+  }
 }
